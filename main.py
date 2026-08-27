@@ -14,8 +14,8 @@ DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1542472440440160307/dmEz
 
 # Lấy các biến cấu hình Supabase từ Environment Variables (Cấu hình trên Render)
 # Nếu không thiết lập trên Render thì có thể nhập trực tiếp ở giá trị mặc định bên dưới
-SUPABASE_URL = os.environ.get("SUPABASE_URL", "YOUR_SUPABASE_URL")
-SUPABASE_KEY = os.environ.get("SUPABASE_KEY", "YOUR_SUPABASE_KEY")
+SUPABASE_URL = os.environ.get("SUPABASE_URL", "https://sdeixbihpbiuqcguaxqi.supabase.co")
+SUPABASE_KEY = os.environ.get("SUPABASE_KEY", "sb_publishable_1rDqbrmjaUAVmMuyxhW3Dg_9uLMOz4B")
 
 supabase: Client = None
 if SUPABASE_URL != "YOUR_SUPABASE_URL" and SUPABASE_KEY != "YOUR_SUPABASE_KEY":
