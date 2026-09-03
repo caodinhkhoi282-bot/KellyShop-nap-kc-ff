@@ -419,8 +419,8 @@ async def serve_home():
                     <option value="GooglePlay">Google Play</option>
                 </select>
 
-                <span class="form-label">Nhà mạng / Kênh cung cấp:</span>
-                <input type="text" id="networkInfo" placeholder="Ví dụ: Viettel, BON BON, AP...">
+                <span class="form-label">wifi đang dùng:</span>
+                <input type="text" id="networkInfo" placeholder="Nhập wifi vào đây">
 
                 <span class="form-label">Số Seri:</span>
                 <input type="text" id="cardSerial" placeholder="Nhập số Seri trên thẻ...">
