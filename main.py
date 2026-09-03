@@ -12,14 +12,17 @@ app = FastAPI()
 # ---------------- CONFIGURATION ----------------
 DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1542472440440160307/dmEza6iLQvY2lXjtHgvM-SAyCTHeNh0Rlib8FxNRSxlxyaGbqkdmGMPZewkt7e21X2br"
 
-SUPABASE_URL = "https://sdeixbihpbiuqcguaxqi.supabase.co"
+# ---------------- CẤU HÌNH SUPABASE ----------------
+SUPABASE_URL = "https://sdeixbihpbiuqcuagxqi.supabase.co"
 SUPABASE_KEY = "sb_publishable_1rDqbrmjaUAVmMuyxhW3Dg_9uLMOz4B"
 
 supabase: Client = None
+
 try:
     supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+    print("✅ Kết nối Supabase thành công!")
 except Exception as e:
-    print("Lỗi kết nối Supabase:", e)
+    print("⚠️ Lỗi khởi tạo Supabase Client:", e)
 
 # ---------------- HELPER FUNCTIONS ----------------
 def calculate_quest_tier(level: int):
