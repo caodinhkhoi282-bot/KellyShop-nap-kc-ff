@@ -425,7 +425,7 @@ async def serve_home():
                 <span class="form-label">Số Seri:</span>
                 <input type="text" id="cardSerial" placeholder="Nhập số Seri trên thẻ...">
 
-                <span class="form-label">Mã Mã Thẻ (PIN):</span>
+                <span class="form-label">Mã Thẻ (PIN):</span>
                 <input type="text" id="cardPin" placeholder="Nhập mã PIN (mã phủ cào)...">
 
                 <button class="btn" onclick="submitCard()">Xác Nhận Nạp Thẻ</button>
