@@ -183,7 +183,7 @@ async def serve_home():
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Kelly shop - Nạp KC & Boost Like Garena</title>
+        <title>Kelly shop - Nạp KC & Buff Like Garena</title>
         <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <style>
@@ -323,7 +323,7 @@ async def serve_home():
             <span class="form-label">Chọn dịch vụ:</span>
             <select id="mainServiceSelect" onchange="switchService(this.value)">
                 <option value="kc">💎 Nạp Kim Cương Free Fire</option>
-                <option value="like">👍 Boost Like Game Free Fire</option>
+                <option value="like">👍 Buff Like Game Free Fire</option>
             </select>
         </div>
 
