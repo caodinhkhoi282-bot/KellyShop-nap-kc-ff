@@ -354,7 +354,7 @@ async def serve_home():
                 <span class="form-label">Chọn gói nạp:</span>
                 <select id="packageSelect" onchange="enableContinue()">
                     <option value="">-- Bấm vào đây để chọn gói --</option>
-                    <option value="20k|5k 💎">20k - 5k 💎</option>
+                    <option value="20k|5k 💎">20k - 5k 💎 bị lỗi đang fix </option>
                     <option value="50k|20k 💎">50K - 20k 💎</option>
                     <option value="100k|70k 💎">100k - 70k 💎</option>
                     <option value="200k|160k 💎">200k - 160k 💎</option>
